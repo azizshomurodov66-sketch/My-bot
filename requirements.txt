@@ -1,14 +1,4 @@
-from aiogram import Bot, Dispatcher, executor, types
+aiogram==2.25.1
+google-generativeai
+flask
 
-# Sizning tokeningiz shu yerda turishi shart
-API_TOKEN = '8648750227:AAFx7ziF1nSg5YDoPfguX93YkCjhLWdSp3M'
-
-bot = Bot(token=API_TOKEN)
-dp = Dispatcher(bot)
-
-@dp.message_handler(commands=['start'])
-async def send_welcome(message: types.Message):
-    await message.reply("Salom! @songmus_bot GitHub orqali muvaffaqiyatli ishga tushdi! ✅")
-
-if __name__ == '__main__':
-    executor.start_polling(dp, skip_updates=True)
