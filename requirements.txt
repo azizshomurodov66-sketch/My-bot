@@ -3,6 +3,3 @@ aiohttp==3.8.6
 flask
 google-generativeai
 
-flask
-google-generativeai
-
