@@ -38,4 +38,17 @@ async def chat(message: types.Message):
 if __name__ == '__main__':
     keep_alive()
     executor.start_polling(dp, skip_updates=True)
+import requests
+import os
 
+# Render-dagi kalitni oladi
+LFM_KEY = os.getenv("LASTFM_API_KEY")
+
+def find_artist(track_name):
+    url = f"http://ws.audioscrobbler.com/2.0/?method=track.search&track={track_name}&api_key={LFM_KEY}&format=json"
+    data = requests.get(url).json()
+    try:
+        res = data['results']['trackmatches']['track'][0]
+        return f"🎵 Qo'shiq: {res['name']}\n🎤 Ijrochi: {res['artist']}"
+    except:
+        return "Topolmadim 😔"
